@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -37,10 +38,11 @@ public class ResumeTracker extends javax.swing.JFrame {
         initComponents();
         
         cardLayout = (CardLayout) (parentCard.getLayout());
-        Show_Products_In_JTable();
+        Show_Applications_In_JTable();
     }
     
-    public void Show_Products_In_JTable()
+//    show applied company in New Application section
+    public void Show_Applications_In_JTable()
     {
             Connection con = MySqlConnection.getConnection();
             String query = "SELECT * FROM applied";
@@ -88,6 +90,7 @@ public class ResumeTracker extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         parentCard = new javax.swing.JPanel();
         newAppPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -109,7 +112,27 @@ public class ResumeTracker extends javax.swing.JFrame {
         deleteLabel = new javax.swing.JLabel();
         SearchCompanyField = new javax.swing.JTextField();
         resetLabel = new java.awt.Label();
-        trackAppPanel = new javax.swing.JPanel();
+        updateAppPanel = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        UpdateFinalOffer1 = new javax.swing.JLabel();
+        UpdateOfferField = new javax.swing.JComboBox<>();
+        UpdateFinalOffer = new javax.swing.JLabel();
+        UpdateSalaryField = new javax.swing.JTextField();
+        UpdateSalaryLabel = new javax.swing.JLabel();
+        UpdateInterviewLabel2 = new javax.swing.JLabel();
+        UpdateInterviewLabel1 = new javax.swing.JLabel();
+        UpdateInterviewLabel = new javax.swing.JLabel();
+        UpdateResponseLabel = new javax.swing.JLabel();
+        UpdateResponseField = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        UpdateNotesField = new javax.swing.JTextArea();
+        UpdateResponseLabel1 = new javax.swing.JLabel();
+        UpdateCompanyField = new javax.swing.JTextField();
+        UpdateFirstInterview = new javax.swing.JTextField();
+        UpdateSecondInterview = new javax.swing.JTextField();
+        UpdateFinalInterview = new javax.swing.JTextField();
+        UpdateAppLabel = new javax.swing.JLabel();
 
         jTextField10.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
 
@@ -140,7 +163,7 @@ public class ResumeTracker extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(4, 37, 58));
         jButton2.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("TRACK APPLICATION");
+        jButton2.setText("UPDATE APPLICATION");
         jButton2.setContentAreaFilled(false);
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -159,6 +182,22 @@ public class ResumeTracker extends javax.swing.JFrame {
         jLabel1.setText("HireMe");
         jLabel1.setOpaque(true);
 
+        jButton3.setBackground(new java.awt.Color(4, 37, 58));
+        jButton3.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("TRACK APPLICATIONS");
+        jButton3.setContentAreaFilled(false);
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton3MouseReleased(evt);
+            }
+        });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -170,7 +209,8 @@ public class ResumeTracker extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,7 +223,9 @@ public class ResumeTracker extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(422, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(368, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -411,7 +453,7 @@ public class ResumeTracker extends javax.swing.JFrame {
                     .addGroup(newAppPanelLayout.createSequentialGroup()
                         .addGap(340, 340, 340)
                         .addComponent(resetLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         newAppPanelLayout.setVerticalGroup(
             newAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -426,25 +468,213 @@ public class ResumeTracker extends javax.swing.JFrame {
                     .addComponent(SearchCompanyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
-        parentCard.add(newAppPanel, "card2");
+        parentCard.add(newAppPanel, "newAppPanel");
 
-        trackAppPanel.setBackground(new java.awt.Color(255, 255, 255));
+        updateAppPanel.setBackground(new java.awt.Color(151, 131, 166));
 
-        javax.swing.GroupLayout trackAppPanelLayout = new javax.swing.GroupLayout(trackAppPanel);
-        trackAppPanel.setLayout(trackAppPanelLayout);
-        trackAppPanelLayout.setHorizontalGroup(
-            trackAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 890, Short.MAX_VALUE)
+        jPanel3.setBackground(new java.awt.Color(151, 131, 166));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 102));
+        jLabel8.setText("*Select Company to update application");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(81, Short.MAX_VALUE))
         );
-        trackAppPanelLayout.setVerticalGroup(
-            trackAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 745, Short.MAX_VALUE)
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(90, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(115, 115, 115))
         );
 
-        parentCard.add(trackAppPanel, "card3");
+        UpdateFinalOffer1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        UpdateFinalOffer1.setForeground(new java.awt.Color(255, 255, 255));
+        UpdateFinalOffer1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        UpdateFinalOffer1.setText("Notes :");
+
+        UpdateOfferField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        UpdateOfferField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Yes", "No" }));
+
+        UpdateFinalOffer.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        UpdateFinalOffer.setForeground(new java.awt.Color(255, 255, 255));
+        UpdateFinalOffer.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        UpdateFinalOffer.setText("Final Offer :");
+
+        UpdateSalaryField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+
+        UpdateSalaryLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        UpdateSalaryLabel.setForeground(new java.awt.Color(255, 255, 255));
+        UpdateSalaryLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        UpdateSalaryLabel.setText("Salary :");
+
+        UpdateInterviewLabel2.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        UpdateInterviewLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        UpdateInterviewLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        UpdateInterviewLabel2.setText("Final Interview:");
+
+        UpdateInterviewLabel1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        UpdateInterviewLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        UpdateInterviewLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        UpdateInterviewLabel1.setText("Second Interview:");
+
+        UpdateInterviewLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        UpdateInterviewLabel.setForeground(new java.awt.Color(255, 255, 255));
+        UpdateInterviewLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        UpdateInterviewLabel.setText("First Interview:");
+
+        UpdateResponseLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        UpdateResponseLabel.setForeground(new java.awt.Color(255, 255, 255));
+        UpdateResponseLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        UpdateResponseLabel.setText("Response :");
+
+        UpdateResponseField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        UpdateResponseField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Response", "Rejected", "Interview Date Set", " " }));
+
+        UpdateNotesField.setColumns(20);
+        UpdateNotesField.setRows(5);
+        jScrollPane2.setViewportView(UpdateNotesField);
+
+        UpdateResponseLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        UpdateResponseLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        UpdateResponseLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        UpdateResponseLabel1.setText("Company :");
+
+        UpdateCompanyField.setEditable(false);
+        UpdateCompanyField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        UpdateCompanyField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                UpdateCompanyFieldMousePressed(evt);
+            }
+        });
+        UpdateCompanyField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateCompanyFieldActionPerformed(evt);
+            }
+        });
+
+        UpdateFirstInterview.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+
+        UpdateSecondInterview.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+
+        UpdateFinalInterview.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+
+        UpdateAppLabel.setBackground(new java.awt.Color(204, 204, 204));
+        UpdateAppLabel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        UpdateAppLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resumetracker/icon/edit_property_32px.png"))); // NOI18N
+        UpdateAppLabel.setText("UPDATE");
+        UpdateAppLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        UpdateAppLabel.setOpaque(true);
+        UpdateAppLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UpdateAppLabelMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                UpdateAppLabelMouseReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout updateAppPanelLayout = new javax.swing.GroupLayout(updateAppPanel);
+        updateAppPanel.setLayout(updateAppPanelLayout);
+        updateAppPanelLayout.setHorizontalGroup(
+            updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(updateAppPanelLayout.createSequentialGroup()
+                .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(updateAppPanelLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(UpdateInterviewLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UpdateFinalOffer1)
+                            .addComponent(UpdateFinalOffer, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UpdateSalaryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UpdateInterviewLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UpdateInterviewLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UpdateResponseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(updateAppPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(UpdateResponseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(updateAppPanelLayout.createSequentialGroup()
+                        .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(UpdateResponseField, 0, 213, Short.MAX_VALUE)
+                            .addComponent(UpdateCompanyField)
+                            .addComponent(UpdateFirstInterview)
+                            .addComponent(UpdateSecondInterview))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(updateAppPanelLayout.createSequentialGroup()
+                        .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(UpdateOfferField, javax.swing.GroupLayout.Alignment.LEADING, 0, 213, Short.MAX_VALUE)
+                            .addComponent(UpdateSalaryField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(UpdateFinalInterview, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addContainerGap())
+                    .addGroup(updateAppPanelLayout.createSequentialGroup()
+                        .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(UpdateAppLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        updateAppPanelLayout.setVerticalGroup(
+            updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(updateAppPanelLayout.createSequentialGroup()
+                .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(updateAppPanelLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE))
+                    .addGroup(updateAppPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateAppPanelLayout.createSequentialGroup()
+                                .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(UpdateResponseLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                                    .addComponent(UpdateCompanyField))
+                                .addGap(29, 29, 29)
+                                .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(UpdateResponseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(UpdateResponseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(UpdateInterviewLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(UpdateFirstInterview, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(UpdateInterviewLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UpdateSecondInterview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(UpdateInterviewLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UpdateFinalInterview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(UpdateSalaryField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UpdateSalaryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(UpdateFinalOffer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(updateAppPanelLayout.createSequentialGroup()
+                        .addGap(0, 5, Short.MAX_VALUE)
+                        .addComponent(UpdateOfferField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(UpdateFinalOffer1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(UpdateAppLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
+        );
+
+        parentCard.add(updateAppPanel, "updateAppPanel");
 
         jSplitPane1.setRightComponent(parentCard);
 
@@ -464,9 +694,10 @@ public class ResumeTracker extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+//    Empty text fields and unable to edit unless company is selected
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(parentCard, "card3");
+        cardLayout.show(parentCard, "updateAppPanel");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseReleased
@@ -475,14 +706,14 @@ public class ResumeTracker extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(parentCard, "card2");
+        cardLayout.show(parentCard, "newAppPanel");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1MouseReleased
 
-//    add new list to the database
+//    add new list to the applied database
     private void addLabelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addLabelMouseReleased
         // TODO add your handling code here:
         if (!IndexField.getText().equals("")) {
@@ -504,9 +735,12 @@ public class ResumeTracker extends javax.swing.JFrame {
                         if (ps.executeUpdate() > 0) {
                             JOptionPane.showMessageDialog(null, "New list added");
                         }
+                        
+                        ps = con.prepareStatement("INSERT INTO updateapp(Company, Response, First, Second, Final, Salary, Offer, Notes) VALUES (?, No Response, N/A, N/A, N/A, N/A, N/A, N/A)");
+                        ps.setString(1, CompanyField.getText());
+                        ps.executeUpdate();
 
-
-                    Show_Products_In_JTable();
+                    Show_Applications_In_JTable();
 
                 } catch (SQLException ex) {
                     Logger.getLogger(ResumeTracker.class.getName()).log(Level.SEVERE, null, ex);
@@ -531,7 +765,7 @@ public class ResumeTracker extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "List Deleted");
                 }
                 
-                Show_Products_In_JTable();
+                Show_Applications_In_JTable();
             } catch (SQLException ex) {
                 Logger.getLogger(ResumeTracker.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -586,10 +820,10 @@ public class ResumeTracker extends javax.swing.JFrame {
                 ps.setString(5, IndexField.getText());
                 
                 if (ps.executeUpdate()> 0) {
-                    JOptionPane.showMessageDialog(null, "Product Updated");
+                    JOptionPane.showMessageDialog(null, "Successfully Updated");
                 }
                 
-                Show_Products_In_JTable();
+                Show_Applications_In_JTable();
             } catch (SQLException ex) {
                 Logger.getLogger(ResumeTracker.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -611,9 +845,9 @@ public class ResumeTracker extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<> (model);
         jTable1.setRowSorter(sorter);
-        sorter.setRowFilter(RowFilter.regexFilter(SearchCompanyField.getText(), 1));
+        sorter.setRowFilter(RowFilter.regexFilter("(?i)" + SearchCompanyField.getText(), 1));
         if (SearchCompanyField.getText().equals("")) {
-            Show_Products_In_JTable();
+            Show_Applications_In_JTable();
         }
     }//GEN-LAST:event_SearchCompanyFieldKeyReleased
 
@@ -632,6 +866,97 @@ public class ResumeTracker extends javax.swing.JFrame {
         DateField.setDate(date.getDate());
     }//GEN-LAST:event_resetLabelMouseReleased
 
+    private void jButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3MouseReleased
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void UpdateCompanyFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateCompanyFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpdateCompanyFieldActionPerformed
+
+    private void UpdateCompanyFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateCompanyFieldMousePressed
+        // TODO add your handling code here:
+        UpdateResponseField.setSelectedIndex(0);
+        UpdateFirstInterview.setText("");
+        UpdateSecondInterview.setText("");
+        UpdateFinalInterview.setText("");
+        UpdateSalaryField.setText("");
+        UpdateOfferField.setSelectedIndex(0);
+        UpdateNotesField.setText("");
+        CompanyNameChooser name = new CompanyNameChooser();
+        name.pack();
+        name.setLocationRelativeTo(null);
+        name.setVisible(true);
+        name.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_UpdateCompanyFieldMousePressed
+
+    private void UpdateAppLabelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateAppLabelMouseReleased
+        // TODO add your handling code here:
+        if (UpdateCompanyField.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Please select company first");
+        } else {
+            Connection con = MySqlConnection.getConnection();
+            
+            String query = "UPDATE updateapp SET Response = ?, First = ?, Second = ?, Final = ?, Salary = ?, Offer = ?, Notes = ? WHERE Company = ?";
+            PreparedStatement ps;
+            try {
+                ps = con.prepareStatement(query);
+                ps.setString(1, UpdateResponseField.getSelectedItem().toString());
+                ps.setString(2, UpdateFirstInterview.getText());
+                ps.setString(3, UpdateSecondInterview.getText());
+                ps.setString(4, UpdateFinalInterview.getText());
+                ps.setString(5, UpdateSalaryField.getText());
+                ps.setString(6, UpdateOfferField.getSelectedItem().toString());
+                ps.setString(7, UpdateNotesField.getText());
+                ps.setString(8, UpdateCompanyField.getText());
+
+                if (ps.executeUpdate()> 0) {
+                    JOptionPane.showMessageDialog(null, "Successfully Updated");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to update");
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }//GEN-LAST:event_UpdateAppLabelMouseReleased
+
+    private void UpdateAppLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateAppLabelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpdateAppLabelMouseClicked
+
+    public static void getUpdateAppData() {
+        Connection con = MySqlConnection.getConnection();
+        String query = "SELECT * FROM updateapp WHERE Company = ?";
+            
+        PreparedStatement ps;
+        ResultSet rs;
+            
+        try {
+            ps = con.prepareStatement(query);
+            ps.setString(1, UpdateCompanyField.getText());
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                UpdateResponseField.setSelectedItem(rs.getString("Response"));
+                UpdateFirstInterview.setText(rs.getString("First"));
+                UpdateSecondInterview.setText(rs.getString("Second"));
+                UpdateFinalInterview.setText(rs.getString("Final"));
+                UpdateSalaryField.setText(rs.getString("Salary"));
+                UpdateOfferField.setSelectedItem(rs.getString("Offer"));
+                UpdateNotesField.setText(rs.getString("Notes"));
+            }
+            
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ResumeTracker.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+    }
     
 //    check whether textfields are empty or not
     public boolean verifyText() 
@@ -694,12 +1019,30 @@ public class ResumeTracker extends javax.swing.JFrame {
     private javax.swing.JTextField IndexField;
     private javax.swing.JTextField PositionField;
     private javax.swing.JTextField SearchCompanyField;
+    private javax.swing.JLabel UpdateAppLabel;
+    public static javax.swing.JTextField UpdateCompanyField;
+    private static javax.swing.JTextField UpdateFinalInterview;
+    private javax.swing.JLabel UpdateFinalOffer;
+    private javax.swing.JLabel UpdateFinalOffer1;
+    private static javax.swing.JTextField UpdateFirstInterview;
+    private javax.swing.JLabel UpdateInterviewLabel;
+    private javax.swing.JLabel UpdateInterviewLabel1;
+    private javax.swing.JLabel UpdateInterviewLabel2;
+    private static javax.swing.JTextArea UpdateNotesField;
+    private static javax.swing.JComboBox<String> UpdateOfferField;
+    private static javax.swing.JComboBox<String> UpdateResponseField;
+    private javax.swing.JLabel UpdateResponseLabel;
+    private javax.swing.JLabel UpdateResponseLabel1;
+    private static javax.swing.JTextField UpdateSalaryField;
+    private javax.swing.JLabel UpdateSalaryLabel;
+    private static javax.swing.JTextField UpdateSecondInterview;
     private javax.swing.JTextField WebsiteField;
     private javax.swing.JLabel addLabel;
     private javax.swing.JLabel deleteLabel;
     private javax.swing.JLabel editLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -707,9 +1050,12 @@ public class ResumeTracker extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTable jTable1;
@@ -717,6 +1063,6 @@ public class ResumeTracker extends javax.swing.JFrame {
     private javax.swing.JPanel newAppPanel;
     private javax.swing.JPanel parentCard;
     private java.awt.Label resetLabel;
-    private javax.swing.JPanel trackAppPanel;
+    private javax.swing.JPanel updateAppPanel;
     // End of variables declaration//GEN-END:variables
 }
