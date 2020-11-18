@@ -202,15 +202,28 @@ public class ResumeTracker extends javax.swing.JFrame {
             new String [] {
                 "Index", "Company", "Position", "Website", "Date Applied"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setDragEnabled(true);
         jTable1.setShowVerticalLines(false);
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(1);
+            jTable1.getColumnModel().getColumn(4).setPreferredWidth(1);
+        }
 
         jPanel2.setBackground(new java.awt.Color(151, 131, 166));
 
@@ -552,6 +565,7 @@ public class ResumeTracker extends javax.swing.JFrame {
                 Logger.getLogger(ResumeTracker.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
     }//GEN-LAST:event_jTable1MouseClicked
 
 //    edit existing data in the database
