@@ -90,7 +90,7 @@ public class ResumeTracker extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        trackAppButton = new javax.swing.JButton();
         parentCard = new javax.swing.JPanel();
         newAppPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -133,6 +133,13 @@ public class ResumeTracker extends javax.swing.JFrame {
         UpdateSecondInterview = new javax.swing.JTextField();
         UpdateFinalInterview = new javax.swing.JTextField();
         UpdateAppLabel = new javax.swing.JLabel();
+        trackAppPanel = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        trackAppTable = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        trackAppSearchField = new javax.swing.JTextField();
 
         jTextField10.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
 
@@ -182,19 +189,19 @@ public class ResumeTracker extends javax.swing.JFrame {
         jLabel1.setText("HireMe");
         jLabel1.setOpaque(true);
 
-        jButton3.setBackground(new java.awt.Color(4, 37, 58));
-        jButton3.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("TRACK APPLICATIONS");
-        jButton3.setContentAreaFilled(false);
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        trackAppButton.setBackground(new java.awt.Color(4, 37, 58));
+        trackAppButton.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
+        trackAppButton.setForeground(new java.awt.Color(255, 255, 255));
+        trackAppButton.setText("TRACK APPLICATIONS");
+        trackAppButton.setContentAreaFilled(false);
+        trackAppButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jButton3MouseReleased(evt);
+                trackAppButtonMouseReleased(evt);
             }
         });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        trackAppButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                trackAppButtonActionPerformed(evt);
             }
         });
 
@@ -210,7 +217,7 @@ public class ResumeTracker extends javax.swing.JFrame {
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(trackAppButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,8 +231,8 @@ public class ResumeTracker extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(368, Short.MAX_VALUE))
+                .addComponent(trackAppButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(421, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -468,7 +475,7 @@ public class ResumeTracker extends javax.swing.JFrame {
                     .addComponent(SearchCompanyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         parentCard.add(newAppPanel, "newAppPanel");
@@ -632,7 +639,7 @@ public class ResumeTracker extends javax.swing.JFrame {
                     .addGroup(updateAppPanelLayout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE))
                     .addGroup(updateAppPanelLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -663,7 +670,7 @@ public class ResumeTracker extends javax.swing.JFrame {
                 .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(UpdateFinalOffer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(updateAppPanelLayout.createSequentialGroup()
-                        .addGap(0, 5, Short.MAX_VALUE)
+                        .addGap(0, 33, Short.MAX_VALUE)
                         .addComponent(UpdateOfferField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(updateAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -675,6 +682,88 @@ public class ResumeTracker extends javax.swing.JFrame {
         );
 
         parentCard.add(updateAppPanel, "updateAppPanel");
+
+        trackAppPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel4.setBackground(new java.awt.Color(151, 131, 166));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Track Applications");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(jLabel10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(21, 21, 21))
+        );
+
+        trackAppTable.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        trackAppTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Company", "Response", "Interview 1", "Interview 2", "Interview 3", "Salary", "Offer"
+            }
+        ));
+        jScrollPane3.setViewportView(trackAppTable);
+        if (trackAppTable.getColumnModel().getColumnCount() > 0) {
+            trackAppTable.getColumnModel().getColumn(5).setPreferredWidth(1);
+            trackAppTable.getColumnModel().getColumn(6).setPreferredWidth(1);
+        }
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel9.setText("Search : ");
+
+        trackAppSearchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                trackAppSearchFieldKeyReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout trackAppPanelLayout = new javax.swing.GroupLayout(trackAppPanel);
+        trackAppPanel.setLayout(trackAppPanelLayout);
+        trackAppPanelLayout.setHorizontalGroup(
+            trackAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(trackAppPanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(trackAppSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, trackAppPanelLayout.createSequentialGroup()
+                .addContainerGap(62, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
+        );
+        trackAppPanelLayout.setVerticalGroup(
+            trackAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(trackAppPanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addGroup(trackAppPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(trackAppSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(195, Short.MAX_VALUE))
+        );
+
+        parentCard.add(trackAppPanel, "trackAppPanel");
 
         jSplitPane1.setRightComponent(parentCard);
 
@@ -873,13 +962,42 @@ public class ResumeTracker extends javax.swing.JFrame {
         DateField.setDate(date.getDate());
     }//GEN-LAST:event_resetLabelMouseReleased
 
-    private void jButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseReleased
+//    track all applied applications
+    private void trackAppButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trackAppButtonMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3MouseReleased
+        trackAppTableShow();
+    }//GEN-LAST:event_trackAppButtonMouseReleased
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void trackAppTableShow() {
+        Connection con = MySqlConnection.getConnection();
+        String query = "Select * FROM updateapp ORDER BY Response";
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            DefaultTableModel model = (DefaultTableModel)trackAppTable.getModel();
+            model.setRowCount(0);
+            Object[] row = new Object[7];
+            
+            while(rs.next())
+            {
+                row[0] = rs.getString("Company");
+                row[1] = rs.getString("Response");
+                row[2] = rs.getString("First");
+                row[3] = rs.getString("Second");
+                row[4] = rs.getString("Final");
+                row[5] = rs.getString("Salary");
+                row[6] = rs.getString("Offer");
+                
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+        }
+    }
+    
+    private void trackAppButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackAppButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        cardLayout.show(parentCard, "trackAppPanel");
+    }//GEN-LAST:event_trackAppButtonActionPerformed
 
     private void UpdateCompanyFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateCompanyFieldActionPerformed
         // TODO add your handling code here:
@@ -936,6 +1054,18 @@ public class ResumeTracker extends javax.swing.JFrame {
     private void UpdateAppLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateAppLabelMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_UpdateAppLabelMouseClicked
+
+    private void trackAppSearchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_trackAppSearchFieldKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) trackAppTable.getModel();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<> (model);
+        trackAppTable.setRowSorter(sorter);
+        sorter.setRowFilter(RowFilter.regexFilter("(?i)" + trackAppSearchField.getText(), 0));
+        
+        if (trackAppSearchField.getText().equals("")) {
+            trackAppTableShow();
+        }
+    }//GEN-LAST:event_trackAppSearchFieldKeyReleased
 
     public static void getUpdateAppData() {
         Connection con = MySqlConnection.getConnection();
@@ -1049,8 +1179,8 @@ public class ResumeTracker extends javax.swing.JFrame {
     private javax.swing.JLabel editLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1058,11 +1188,14 @@ public class ResumeTracker extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTable jTable1;
@@ -1070,6 +1203,10 @@ public class ResumeTracker extends javax.swing.JFrame {
     private javax.swing.JPanel newAppPanel;
     private javax.swing.JPanel parentCard;
     private java.awt.Label resetLabel;
+    private javax.swing.JButton trackAppButton;
+    private javax.swing.JPanel trackAppPanel;
+    private javax.swing.JTextField trackAppSearchField;
+    private javax.swing.JTable trackAppTable;
     private javax.swing.JPanel updateAppPanel;
     // End of variables declaration//GEN-END:variables
 }
