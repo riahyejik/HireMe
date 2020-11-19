@@ -736,8 +736,15 @@ public class ResumeTracker extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(null, "New list added");
                         }
                         
-                        ps = con.prepareStatement("INSERT INTO updateapp(Company, Response, First, Second, Final, Salary, Offer, Notes) VALUES (?, No Response, N/A, N/A, N/A, N/A, N/A, N/A)");
+                        ps = con.prepareStatement("INSERT INTO updateapp(Company, Response, First, Second, Final, Salary, Offer, Notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
                         ps.setString(1, CompanyField.getText());
+                        ps.setString(2, "No Response");
+                        ps.setString(3, "N/A");
+                        ps.setString(4, "N/A");
+                        ps.setString(5, "N/A");
+                        ps.setString(6, "N/A");
+                        ps.setString(7, "N/A");
+                        ps.setString(8, "N/A");
                         ps.executeUpdate();
 
                     Show_Applications_In_JTable();
